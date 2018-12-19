@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<script src="svetlo.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.js"></script>
+
+
+<style>
+#svetlo {
+    width: 100%;
+    height: 450px;
+}
+</style>
+
+<div id="svetlo"></div>
+
+<script>
+var map = L.map('svetlo').setView([49.7417517, 15.3350758], 7);
+map.scrollWheelZoom.disable();
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; přispěvatelé <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, akce <a href="https://www.betlemskesvetlo.cz/?page_id=56">betlemskesvetlo.cz</a>'
+}).addTo(map);
+
+markers.forEach(function(m) {
+    L.marker([m[1], m[2]]).addTo(map)
+    .bindPopup(m[4])
+})
+</script>
